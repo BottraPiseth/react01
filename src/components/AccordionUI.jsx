@@ -1,12 +1,15 @@
 import React from "react";
-import QNADisplay from "./QNADisplay";
+import AccordionDisplay from "./AccordionDisplay";
+import { useState } from "react";
 
-const QNA = (props) => {
+const AccordionUI = (props) => {
+  const [openIndex, setOpenIndex] = useState(null);
+
   const arrQNA = [
     {
       question: "What is Front-End Development?",
       answer:
-        "Front-end development is the creation of the user-facing side of websites and applications, focusing on everything users interact with directly, such as layout, design, and interactivity. Using HTML, CSS, and JavaScript, developers build responsive, accessible, and visually appealing interfaces. It bridges design and functionality.",
+        "Front-end development is the creation of the user-facing side of websites and applications, focusing on everything users interact with directly, such as layout, design, and interactivity. Using HTML, CSS, and JavaScript, developers build responsive, accessible, and visually appealing interfaces. It bridges design and functionality",
     },
     {
       question: "What is Back-End Development?",
@@ -26,18 +29,25 @@ const QNA = (props) => {
   ];
   return (
     <>
-      <p>Collapse</p>
-      {arrQNA.map((item, index) => {
-        return (
-          <QNADisplay
-            key={item.id || index}
-            question={item.question}
-            answer={item.answer}
-          />
-        );
-      })}
+      <p>Accordion + Tailwind</p>
+      {arrQNA.map((qna, index) => (
+        <AccordionDisplay
+          key={qna.question}
+          indexProp={index}
+          open={openIndex === index}
+          question={qna.question}
+          answer={qna.answer}
+          handleOnClick={() => {
+            if (openIndex === index) {
+              setOpenIndex(null);
+            } else {
+              setOpenIndex(index);
+            }
+          }}
+        />
+      ))}
     </>
   );
 };
 
-export default QNA;
+export default AccordionUI;

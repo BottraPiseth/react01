@@ -1,14 +1,9 @@
-import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import Accordion from "./components/Accordion";
 import QNA from "./components/QNA";
-
+import AccordionUI from "./components/AccordionUI";
 function App() {
-  // let open = false;
-  // function handleOpen(){
-  // open = true;
-  // }
-
   return (
     <>
       <img
@@ -17,9 +12,13 @@ function App() {
         alt="React logo"
         style={{ margin: "10px", padding: "10px" }}
       />
+      <AccordionUI />
+      <Accordion />
       <QNA />
-      <QNA />
-      <QNA />
+
+      <footer>
+        <p>&copy; 2026 All rights reserved by PISETH.</p>
+      </footer>
     </>
   );
 }
